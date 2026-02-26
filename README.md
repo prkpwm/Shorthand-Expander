@@ -36,7 +36,7 @@ Clean dialog for adding or editing shortcuts.
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/shorthand-expander.git
+git clone [https://github.com/yourusername/shorthand-expander.git](https://github.com/prkpwm/Shorthand-Expander.git)
 cd shorthand-expander
 ```
 
