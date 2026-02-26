@@ -278,6 +278,8 @@ class ShorthandExpanderGUI(QMainWindow):
     def load_shorthands(self):
         """Load shorthands from file"""
         if self.expander.load_from_file():
+            print(f"Loaded from: {self.expander.loaded_file_path}")
+            print(f"Total shorthands: {self.expander.count()}")
             self.total_label.setText(str(self.expander.count()))
             self.populate_shorthand_list()
             self.log_activity(f"✅ Loaded {self.expander.count()} shorthands")
@@ -306,7 +308,9 @@ class ShorthandExpanderGUI(QMainWindow):
             shorthand, expansion = dialog.get_values()
             if shorthand and expansion:
                 if self.expander.add(shorthand, expansion):
-                    self.expander.save_to_file()
+                    save_result = self.expander.save_to_file()
+                    print(f"Save result: {save_result}")
+                    print(f"Saved to: {self.expander.loaded_file_path}")
                     self.populate_shorthand_list()
                     self.total_label.setText(str(self.expander.count()))
                     self.log_activity(f"➕ Added: {shorthand} → {expansion}")

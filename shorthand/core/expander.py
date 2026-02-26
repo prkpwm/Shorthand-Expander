@@ -1,5 +1,6 @@
 """Shorthand expansion logic"""
 import os
+import sys
 from typing import Dict
 
 
@@ -9,13 +10,44 @@ class ShorthandExpander:
     def __init__(self):
         self.shorthands: Dict[str, str] = {}
         self.max_length = 0
+        self.loaded_file_path = None
+    
+    def _get_data_dir(self):
+        """Get the directory for storing user data"""
+        if getattr(sys, 'frozen', False):
+            # Running as compiled executable
+            # Save to user's AppData folder
+            app_data = os.path.join(os.environ.get('APPDATA', ''), 'ShorthandExpander')
+            os.makedirs(app_data, exist_ok=True)
+            return app_data
+        else:
+            # Running from source
+            return os.path.join(os.path.dirname(__file__), '..')
+    
+    def _get_bundled_file(self, filename):
+        """Get path to bundled file in PyInstaller"""
+        if getattr(sys, 'frozen', False):
+            # Running as compiled executable
+            base_path = sys._MEIPASS
+            return os.path.join(base_path, 'shorthand', filename)
+        else:
+            return None
     
     def load_from_file(self, filename: str = "shorthands.txt") -> bool:
         """Load shorthands from file"""
         self.shorthands = {}
         self.max_length = 0
         
+        # Try user data directory first (for saved changes)
+        data_dir = self._get_data_dir()
+        user_file = os.path.join(data_dir, filename)
+        
+        # Try bundled file (for initial load)
+        bundled_file = self._get_bundled_file(filename)
+        
         possible_paths = [
+            user_file,  # User's saved file (highest priority)
+            bundled_file,  # Bundled with exe
             filename,
             os.path.join(os.path.dirname(__file__), '..', filename),
             os.path.join(os.path.dirname(__file__), '..', '..', filename),
@@ -23,8 +55,8 @@ class ShorthandExpander:
         
         file_path = None
         for path in possible_paths:
-            if os.path.exists(path):
-                file_path = path
+            if path and os.path.exists(path):
+                file_path = os.path.abspath(path)
                 break
         
         if not file_path:
@@ -44,14 +76,24 @@ class ShorthandExpander:
                         self.shorthands[shorthand] = expansion
                         self.max_length = max(self.max_length, len(shorthand))
             
+            # Always save to user data directory
+            self.loaded_file_path = os.path.join(data_dir, filename)
             return True
-        except Exception:
+        except Exception as e:
+            print(f"Error loading file: {e}")
             return False
     
     def save_to_file(self, filename: str = None) -> bool:
         """Save shorthands to file"""
         if filename is None:
-            filename = os.path.join(os.path.dirname(__file__), '..', 'shorthands.txt')
+            if self.loaded_file_path:
+                filename = self.loaded_file_path
+            else:
+                data_dir = self._get_data_dir()
+                filename = os.path.join(data_dir, 'shorthands.txt')
+        
+        # Ensure directory exists
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
         
         try:
             with open(filename, 'w', encoding='utf-8') as f:
@@ -60,7 +102,8 @@ class ShorthandExpander:
                 for shorthand, expansion in sorted(self.shorthands.items()):
                     f.write(f"{shorthand}\t{expansion}\n")
             return True
-        except Exception:
+        except Exception as e:
+            print(f"Error saving file: {e}")
             return False
     
     def add(self, shorthand: str, expansion: str) -> bool:

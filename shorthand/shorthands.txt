@@ -1,106 +1,94 @@
 # Shorthand Expander Dictionary
 # Format: shorthand[TAB]expansion
-# Lines starting with # are comments
-# You can edit this file and restart the program to reload
 
-# Actions
-cp      copy
-del     delete
-dp      deploy
-dv      develop
-mr      more
-mv      move
-mk      make
-rem     remove
-wn      why not work
-wr      where
-wt      what
-
-# Basic words
-abt     about
-avg     average
-btwn    between
-
-# Development terms
-chg     change
-chk     check
-dt      data test
-dup     duplicate
-htu     how to use
-int     interface
-len     length
-max     maximum
-min     minimum
-mng     manage
-mt      empty
-ref     reference
-spr     sprint planning
-ut      unit test
-wnw     why not work
-wsw     why still work
-tur     npm run turbo
-mtt     meeting
+abst	abstract
+abt	about
+act	active
+algo	algorithm
+avg	average
+brnch	branch
+btwn	between
+calc	calculate
+cap	capacity
+cfg	configure
+chg	change
+chk	check
+chr	character
+cls	class
+cmp	compile
+cn	const
+col	column
+comp	compute
+cp	copy
+cth	catch
 cust	customer
-act     active
+del	delete
+dict	dictionary
+diff	different
+dist	distribute
+docs	documentation
+dp	deploy
+dt	data test
+dup	duplicate
+dv	develop
+err	error
+evry	every
+exec	execute
+expt	export
+ext	extends
+feat	feature
+filt	filter
+fn	function
+freq	frequency
+ftch	fetch
+htu	how to use
+impl	implements
+imt	import
+init	initialize
+inst	install
+int	interface
+len	length
+lg	console.log('%c[TRACK]','color:#00e5ff;font-weight:bold',{tag: 'ORDER',step: 'before-submit',payload: order});
+max	maximum
+min	minimum
+mk	make
+mng	manage
+mr	more
+ms	make support
+mt	empty
+mtt	meeting
+mv	move
+othr	other
+pos	position
+priv	private
+proc	process
+prot	protected
+pub	public
+rd	reduce
+ref	reference
+rem	remove
+req	requirement
+res	response
+resm	resume
+ret	return
+rfct	refactor
+rmm	remember
+rst	reset
+rtf	rename this function
+shd	should
+shrt	short
+smth	something
+sol	solution
+spec	specification
+spr	sprint planning
+stat	static
+sum	summary
 temp	temparary
-
-# Programming keywords
-cls     class
-cn      const
-cth     catch
-err     error
-expt    export
-filt    filter
-fn      function
-imt     import
-lg      console.log('%c[TRACK]','color:#00e5ff;font-weight:bold',{tag: 'ORDER',step: 'before-submit',payload: order});
-rd      reduce
-req     request
-res     response
-ret     return
-
-# Programming terms
-abst    abstract
-algo    algorithm
-brnch   branch
-calc    calculate
-cap     capacity
-cfg     configure
-chr     character
-cmp     compile
-col     column
-comp    compute
-dict    dictionary
-diff    different
-dist    distribute
-docs    documentation
-evry    every
-exec    execute
-ext     extends
-feat    feature
-freq    frequency
-ftch    fetch
-impl    implements
-init    initialize
-inst    install
-othr    other
-pos     position
-priv    private
-proc    process
-prot    protected
-pub     public
-req     requirement
-resm    resume
-rfct    refactor
-rst     reset
-shd     should
-shrt    short
-smth    something
-soln    solution
-spec    specification
-stat    static
-sum     summary
-ver     version
-ms      make support 
-rmm     remember
-
+tur	npm run turbo
+ut	unit test
+ver	version
+wnw	why not work
+wr	where
+wsnw	why still not work
+wsw	why still work
+wt	what
