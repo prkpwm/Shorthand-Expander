@@ -1,0 +1,106 @@
+# Shorthand Expander Dictionary
+# Format: shorthand[TAB]expansion
+# Lines starting with # are comments
+# You can edit this file and restart the program to reload
+
+# Actions
+cp      copy
+del     delete
+dp      deploy
+dv      develop
+mr      more
+mv      move
+mk      make
+rem     remove
+wn      why not work
+wr      where
+wt      what
+
+# Basic words
+abt     about
+avg     average
+btwn    between
+
+# Development terms
+chg     change
+chk     check
+dt      data test
+dup     duplicate
+htu     how to use
+int     interface
+len     length
+max     maximum
+min     minimum
+mng     manage
+mt      empty
+ref     reference
+spr     sprint planning
+ut      unit test
+wnw     why not work
+wsw     why still work
+tur     npm run turbo
+mtt     meeting
+cust	customer
+act     active
+temp	temparary
+
+# Programming keywords
+cls     class
+cn      const
+cth     catch
+err     error
+expt    export
+filt    filter
+fn      function
+imt     import
+lg      console.log('%c[TRACK]','color:#00e5ff;font-weight:bold',{tag: 'ORDER',step: 'before-submit',payload: order});
+rd      reduce
+req     request
+res     response
+ret     return
+
+# Programming terms
+abst    abstract
+algo    algorithm
+brnch   branch
+calc    calculate
+cap     capacity
+cfg     configure
+chr     character
+cmp     compile
+col     column
+comp    compute
+dict    dictionary
+diff    different
+dist    distribute
+docs    documentation
+evry    every
+exec    execute
+ext     extends
+feat    feature
+freq    frequency
+ftch    fetch
+impl    implements
+init    initialize
+inst    install
+othr    other
+pos     position
+priv    private
+proc    process
+prot    protected
+pub     public
+req     requirement
+resm    resume
+rfct    refactor
+rst     reset
+shd     should
+shrt    short
+smth    something
+soln    solution
+spec    specification
+stat    static
+sum     summary
+ver     version
+ms      make support 
+rmm     remember
+

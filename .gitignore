@@ -1,0 +1,44 @@
+# Build outputs
+build/
+dist/
+*.exe
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+
+# PyInstaller
+*.spec.bak
+*.manifest
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Shortcuts
+*.lnk
+
+# Test results
+source/result.txt
+
+# Logs
+*.log
