@@ -126,6 +126,7 @@ pub	public
 pwd	password
 qry	query
 rd	reduce
+rechk	recheck
 ref	reference
 reg	register
 rem	remove
