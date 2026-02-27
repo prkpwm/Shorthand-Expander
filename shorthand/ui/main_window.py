@@ -3,7 +3,7 @@ import os
 import time
 from PyQt5.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
                              QLabel, QPushButton, QTextEdit, QListWidget, 
-                             QListWidgetItem, QLineEdit, QFrame, QSizeGrip, QMessageBox)
+                             QListWidgetItem, QLineEdit, QFrame, QSizeGrip, QMessageBox, QFileDialog)
 from PyQt5.QtCore import Qt, QSettings
 from PyQt5.QtGui import QFont, QIcon
 
@@ -250,6 +250,23 @@ class ShorthandExpanderGUI(QMainWindow):
         btn_layout.addWidget(delete_btn)
         
         layout.addLayout(btn_layout)
+        
+        # Import/Export buttons
+        io_layout = QHBoxLayout()
+        io_layout.setSpacing(10)
+        
+        import_btn = QPushButton("📥 Import")
+        import_btn.setObjectName("actionBtn")
+        import_btn.clicked.connect(self.import_file)
+        io_layout.addWidget(import_btn)
+        
+        export_btn = QPushButton("📤 Export")
+        export_btn.setObjectName("actionBtn")
+        export_btn.clicked.connect(self.export_file)
+        io_layout.addWidget(export_btn)
+        
+        layout.addLayout(io_layout)
+        
         return frame
     
     def create_activity_log(self) -> QFrame:
@@ -365,6 +382,82 @@ class ShorthandExpanderGUI(QMainWindow):
             self.populate_shorthand_list()
             self.total_label.setText(str(self.expander.count()))
             self.log_activity(f"🗑️ Deleted: {shorthand}")
+    
+    def import_file(self):
+        """Import shortcuts from a file"""
+        file_path, _ = QFileDialog.getOpenFileName(
+            self,
+            "Import Shorthands File",
+            "",
+            "Text Files (*.txt);;All Files (*.*)"
+        )
+        
+        if not file_path:
+            return
+        
+        try:
+            imported_count = 0
+            skipped_count = 0
+            
+            with open(file_path, 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if not line or line.startswith('#'):
+                        continue
+                    
+                    parts = line.split('\t') if '\t' in line else line.split()
+                    if len(parts) >= 2:
+                        shorthand = parts[0].strip()
+                        expansion = ' '.join(parts[1:]).strip()
+                        
+                        if self.expander.add(shorthand, expansion):
+                            imported_count += 1
+                        else:
+                            skipped_count += 1
+            
+            self.expander.save_to_file()
+            self.populate_shorthand_list()
+            self.total_label.setText(str(self.expander.count()))
+            
+            msg = f"✅ Imported {imported_count} shortcuts"
+            if skipped_count > 0:
+                msg += f"\n⚠️ Skipped {skipped_count} duplicates"
+            
+            self.log_activity(msg)
+            QMessageBox.information(self, "Import Complete", msg)
+            
+        except Exception as e:
+            error_msg = f"Failed to import file: {str(e)}"
+            self.log_activity(f"❌ {error_msg}")
+            QMessageBox.critical(self, "Import Error", error_msg)
+    
+    def export_file(self):
+        """Export shortcuts to a file"""
+        file_path, _ = QFileDialog.getSaveFileName(
+            self,
+            "Export Shorthands File",
+            "shorthands_export.txt",
+            "Text Files (*.txt);;All Files (*.*)"
+        )
+        
+        if not file_path:
+            return
+        
+        try:
+            with open(file_path, 'w', encoding='utf-8') as f:
+                f.write("# Shorthand Expander Dictionary\n")
+                f.write("# Format: shorthand[TAB]expansion\n\n")
+                for shorthand, expansion in sorted(self.expander.items()):
+                    f.write(f"{shorthand}\t{expansion}\n")
+            
+            msg = f"✅ Exported {self.expander.count()} shortcuts to:\n{file_path}"
+            self.log_activity(f"📤 Exported {self.expander.count()} shortcuts")
+            QMessageBox.information(self, "Export Complete", msg)
+            
+        except Exception as e:
+            error_msg = f"Failed to export file: {str(e)}"
+            self.log_activity(f"❌ {error_msg}")
+            QMessageBox.critical(self, "Export Error", error_msg)
     
     def start_listener(self):
         """Start keyboard listener thread"""

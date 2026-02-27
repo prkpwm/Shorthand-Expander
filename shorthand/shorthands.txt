@@ -3,10 +3,22 @@
 
 abst	abstract
 abt	about
+acc	account
 act	active
+addr	address
+adl	add log
 algo	algorithm
+app	application
+arr	array
+async	asynchronous
+ati	add to interface
+auth	authentication
 avg	average
+bck	back
+bf	beautyfull
+bkp	backup
 brnch	branch
+btn	button
 btwn	between
 calc	calculate
 cap	capacity
@@ -14,25 +26,43 @@ cfg	configure
 chg	change
 chk	check
 chr	character
+cln	to var first and clean
 cls	class
 cmp	compile
 cn	const
+cnff	create new file for
 col	column
+comm	comment
 comp	compute
+conn	connection
+corr	correct
 cp	copy
+crt	create
 cth	catch
+ctrl	control
+ctu	change to use
 cust	customer
+db	database
+dbg	debug
+def	default
 del	delete
+desc	description
+dev	development
 dict	dictionary
 diff	different
+dir	directory
 dist	distribute
+doc	document
 docs	documentation
 dp	deploy
 dt	data test
 dup	duplicate
 dv	develop
+elem	element
+env	environment
 err	error
 evry	every
+evt	event
 exec	execute
 expt	export
 ext	extends
@@ -40,32 +70,64 @@ feat	feature
 filt	filter
 fn	function
 freq	frequency
+frm	from
 ftch	fetch
+func	function
+gen	generate
+gs	git stash
+gsp	git stash pop
+hdr	header
+hei	height
+hil	highlight
+ht	how to
 htu	how to use
+imp	import
 impl	implements
-imt	import
+inc	include
+info	information
 init	initialize
 inst	install
 int	interface
+itm	item
+lea	look exam at
 len	length
 lg	console.log('%c[TRACK]','color:#00e5ff;font-weight:bold',{tag: 'ORDER',step: 'before-submit',payload: order});
+lib	library
+lst	list
 max	maximum
+mdl	module
+mem	memory
+meth	method
 min	minimum
 mk	make
 mng	manage
+mod	modify
 mr	more
 ms	make support
+msg	message
 mt	empty
 mtt	meeting
 mv	move
+nxt	next
+obj	object
+opt	option
 othr	other
+pkg	package
 pos	position
+prev	previous
 priv	private
 proc	process
+prod	production
+prof	professional
+prop	property
 prot	protected
+prv	provide
 pub	public
+pwd	password
+qry	query
 rd	reduce
 ref	reference
+reg	register
 rem	remove
 req	requirement
 res	response
@@ -74,19 +136,42 @@ ret	return
 rfct	refactor
 rmm	remember
 rst	reset
+rt	run test
 rtf	rename this function
+rtn	return
+scr	screen
+sel	select
 shd	should
 shrt	short
 smth	something
+snt	sentence
 sol	solution
 spec	specification
 spr	sprint planning
+src	source
+srv	server
 stat	static
+str	string
+sts	set to store
+sub	submit
 sum	summary
+sync	synchronize
+sys	system
 temp	temparary
+tgt	target
+tmp	template
+tst	test
 tur	npm run turbo
+txt	text
+upd	update
+usr	user
 ut	unit test
+util	utility
+val	value
+var	variable
 ver	version
+wei	weight
+wid	width
 wnw	why not work
 wr	where
 wsnw	why still not work
